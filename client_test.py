@@ -22,14 +22,14 @@ class ClientTest(unittest.TestCase):
       self.assertEqual(getDataPoint(quote), (quote['stock'], quote['top_bid']['price'], quote['top_ask']['price'], (quote['top_bid']['price'] + quote['top_ask']['price']) / 2))
 
   """ ------------ Add more unit tests ------------ """
-  def test_getRatio_calculateDivideByZero(selfself):
+  def test_getRatio_calculateDivideByZero(self):
     price_pairs = [
       {'price_a': 100, 'price_b': 0},
       {'price_a': 0, 'price_b': 0}
     ]
     """ Assertation """
     for price_pair in price_pairs:
-      self.assertEqual(getRatio(price_pair), None)
+      self.assertIsNone(getRatio(price_pair['price_a'], price_pair['price_b']))
 
 
 if __name__ == '__main__':
